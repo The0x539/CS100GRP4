@@ -10,27 +10,16 @@ class SampleMain {
     /*
      * INSTRUCTIONS
      * Compile: javac SampleMain.java
-     * Run: java SampleMain x1 y1 x2 y2
-     * Output: Coordinates of the midpoint like so:
-     * >> x: 3, y: 4
+     * Run: java SampleMain
+     * Output: Sanity check that Java is running correctly
      */
     
     public static void main(String[] args){
         
-        int[] p1 = {0, 0};
-        int[] p2 = {3, 0};
+        int sum = 2 + 2;
+        System.out.println("2 + 2 = " + sum);
+        System.out.println("Java appears to be running correctly!");
         
-        int[] midPoint = getMidPoint(p1, p2);
-        
-        System.out.println("x: " + midPoint[0] + ", y: " + midPoint[1]);
-        
-    }
-    
-    public static int[] getMidPoint(int[] p1, int[] p2){
-        int[] mp = {0, 0};
-        int x = (p2[0] - p1[0]) / 2;
-        int y = (p2[1] - p1[1]) / 2;
-        return mp;
     }
     
 }
