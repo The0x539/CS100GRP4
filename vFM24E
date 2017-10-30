@@ -1,0 +1,14 @@
+#!/bin/bash
+
+echo -n "enter your github email: "
+read email
+echo -n "enter your github username: "
+read username
+echo -n "enter your github password (will be hidden): "
+read -s password
+echo -n $username
+
+git config --global user.name $username
+git config --global user.password $password
+git config --global user.email $email
+echo -n "logged in!"
