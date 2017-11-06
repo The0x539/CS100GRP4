@@ -30,7 +30,7 @@ def sample():
 
 @server.route('/foo')
 def foo():
-    return render_template('foo.html')
+    return render_template('foo.html', aaa=range(1,3))
 
 @server.errorhandler(404)
 def page_not_found(error):

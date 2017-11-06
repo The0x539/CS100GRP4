@@ -11,8 +11,6 @@
 
 <body>
 	<header>
-		<h1>Header</h1>
-		<h5>foo</h5>
 		<form>
 			<input type="date" name="date">
 			<input type="time" name="time">
@@ -28,6 +26,7 @@
 	</nav>
 	<main>
 		
+		{% for v in aaa %}
 		<article>
 			<h4>
 				<img src=https://i.imgur.com/d0UBT.png height=50/>
@@ -43,22 +42,7 @@
 			<h5>Reply username</h5>
 			<p>Reply comment</p>
 		</article>
-		
-		<article>
-			<h4>
-				<img src=https://i.imgur.com/d0UBT.png height=50/>
-				Username
-			</h4>
-			<p>Post time</p>
-			<p>the post body goes here. this can be at least somewhat long</p>
-			<h4>Comment on this post</h4>
-			
-			<h5>Reply username</h5>
-			<p>Reply comment</p>
-			
-			<h5>Reply username</h5>
-			<p>Reply comment</p>
-		</article>
+		{% endfor %}
 		
 	</main>
 	<footer>
