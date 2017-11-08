@@ -28,9 +28,17 @@ def name(name=None):
 def sample():
     return render_template('map.html')
 
+aaa = [
+    {'username': 'bar'},
+    {'username': 'baz'},
+    {'username': 'gaz'},
+    {'username': 'fizz'},
+    {'username': 'buzz'}
+]
+
 @server.route('/foo')
 def foo():
-    return render_template('foo.html', aaa=range(1,3))
+    return render_template('foo.html', bbb=aaa)
 
 @server.errorhandler(404)
 def page_not_found(error):
