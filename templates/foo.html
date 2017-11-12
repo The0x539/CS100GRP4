@@ -7,7 +7,57 @@
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Sonsie+One" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="style.css">
 	<!--[if lt IE 9]> <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href="css/main.css" rel="stylesheet">
 </head>
+
+<style type="text/css">
+		body {
+	    text-align: left; /* IE */
+		}	
+		#main {
+		    margin-left: auto;
+		    margin-right: auto;
+		    text-align: left;   /* IE */
+		    width: 90px;         /* Fill this out. */
+		}
+		
+		span{
+			color: black;
+		}
+		p{
+    		border-radius: 5px;
+    		border: 1px solid black;
+			padding: 10px;
+			position: relative;
+    		left: 60px;
+    		right: 0;
+			width: 560px;
+			font-family: "Roboto", Arial, sans-serif;
+			background-color: lightgrey;
+			
+		}
+
+		h2{
+			padding: 6px;
+			font-family: "Roboto", Arial, sans-serif;
+			border-bottom: 2px solid #288ce4;
+    		background-color: lightgrey;
+		}
+		h4{
+			color: #288ce4;
+			font-weight: bold;
+			font-family: "Roboto", Arial, sans-serif;
+			
+		}
+		article{
+			border: 2px solid black;
+			padding: 15px;
+			padding-top: 0px;
+			padding-bottom: 0px;
+    		border-radius: 6px;
+		}
+</style>
+
 
 <body>
 	<header>
@@ -19,28 +69,47 @@
 			<br>
 			<input type="submit" name="post" value="Post">
 		</form>
-
 	</header>
+	
 	<hr>
+	
+	
 	<nav>
 	</nav>
+	
 	<main>
-		
 		{% for v in bbb %}
+		
 		<article>
 			<h4>
-				<img src=https://i.imgur.com/d0UBT.png height=50/>
-				{{ v['username'] }}
+				<img src=https://i.imgur.com/d0UBT.png width=50/ height=50/>
+				<!-- Username -->
+				{{ v['Username'] }} 
+				<span class="bullet time-ago-bullet" aria-hidden="true">•</span>
+				<a>
+					<!-- Add when user posted. Below is example time -->
+					Sunday, November 11, 2017 11:52 AM
+				</a>
 			</h4>
-			<p>Post time</p>
-			<p>the post body goes here. this can be at least somewhat long</p>
+			
+			
+			<p> 
+			<!-- This is where a user post goes -->
+				The post body goes here. This can be at least somewhat long. Testing wrap to next line.
+			</p>
+			
 		</article>
 		{% endfor %}
 		
 	</main>
+	
 	<footer>
-		<p>©Copyright 2050 by nobody. All rights reversed.</p>
+		<br/>
+			©Copyright 2050 by nobody. All rights reversed.
 	</footer>
+	
 </body>
+
+
 
 </html>

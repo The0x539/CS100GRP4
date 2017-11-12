@@ -1,0 +1,45 @@
+	body {
+	    text-align: left; /* IE */
+		}	
+		#main {
+		    margin-left: auto;
+		    margin-right: auto;
+		    text-align: left;   /* IE */
+		    width: 90px;         /* Fill this out. */
+		}
+		
+		span{
+			color: black;
+		}
+		p{
+    		border-radius: 5px;
+    		border: 1px solid black;
+			padding: 10px;
+			position: relative;
+    		left: 60px;
+    		right: 0;
+			width: 560px;
+			font-family: "Roboto", Arial, sans-serif;
+			background-color: lightgrey;
+			
+		}
+
+		h2{
+			padding: 6px;
+			font-family: "Roboto", Arial, sans-serif;
+			border-bottom: 2px solid #288ce4;
+    		background-color: lightgrey;
+		}
+		h4{
+			color: #288ce4;
+			font-weight: bold;
+			font-family: "Roboto", Arial, sans-serif;
+			
+		}
+		article{
+			border: 2px solid black;
+			padding: 15px;
+			padding-top: 0px;
+			padding-bottom: 0px;
+    		border-radius: 6px;
+		}
