@@ -1,11 +1,9 @@
 body {
-text-align: left; /* IE */
-}	
-#main {
-    margin-left: auto;
+	margin-left: auto;
+	text-align: left; /* IE */
     margin-right: auto;
     text-align: left;   /* IE */
-    width: 90px;         /* Fill this out. */
+    width: 500px;         /* Fill this out. */
 }
 
 span{
