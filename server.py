@@ -23,22 +23,18 @@ def home():
 @server.route('/name/<name>')
 def name(name=None):
     return render_template('index.html', name=name)
-    
-@server.route('/sample')
-def sample():
-    return render_template('map.html')
 
-aaa = [
-    {'username': 'bar'},
-    {'username': 'baz'},
-    {'username': 'gaz'},
-    {'username': 'fizz'},
-    {'username': 'buzz'}
+posts = [
+    {'username': 'bar', 'time': 'too soon'},
+    {'username': 'baz', 'time': 'too late'},
+    {'username': 'gaz', 'time': 'right now'},
+    {'username': 'fizz', 'time': 'never'},
+    {'username': 'buzz', 'time': 'always'}
 ]
 
 @server.route('/foo')
 def foo():
-    return render_template('foo.html', bbb=aaa)
+    return render_template('foo.html', posts=posts)
 
 @server.errorhandler(404)
 def page_not_found(error):

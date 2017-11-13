@@ -28,17 +28,17 @@
 	</nav>
 	
 	<main>
-		{% for v in bbb %}
+		{% for post in posts %}
 		
 		<article>
 			<h4>
 				<img src=https://i.imgur.com/d0UBT.png width=50/ height=50/>
 				<!-- Username -->
-				{{ v['username'] }} 
+				{{ post['username'] }} 
 				<span class="bullet time-ago-bullet" aria-hidden="true">•</span>
 				<a>
-					<!-- Add when user posted. Below is example time -->
-					Sunday, November 11, 2017 11:52 AM
+					<!-- Time of post -->
+					{{ post['time'] }}
 				</a>
 			</h4>
 			
