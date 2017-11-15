@@ -24,16 +24,15 @@ def home():
 def name(name=None):
     return render_template('index.html', name=name)
 
-posts = [
-    {'username': 'bar', 'time': 'too soon'},
-    {'username': 'baz', 'time': 'too late'},
-    {'username': 'gaz', 'time': 'right now'},
-    {'username': 'fizz', 'time': 'never'},
-    {'username': 'buzz', 'time': 'always'}
-]
-
 @server.route('/foo')
 def foo():
+    posts = [
+        {'name': 'bar', 'time': 'too soon', 'body': 'aaa'},
+        {'name': 'baz', 'time': 'too late', 'body': 'bbb'},
+        {'name': 'gaz', 'time': 'right now', 'body': 'ccc'},
+        {'name': 'fizz', 'time': 'never', 'body': 'ddd'},
+        {'name': 'buzz', 'time': 'always', 'body': 'eee'}
+    ]
     return render_template('foo.html', posts=posts)
 
 @server.errorhandler(404)

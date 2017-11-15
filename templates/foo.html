@@ -34,7 +34,7 @@
 			<h4>
 				<img src=https://i.imgur.com/d0UBT.png width=50/ height=50/>
 				<!-- Username -->
-				{{ post['username'] }} 
+				{{ post['name'] }} 
 				<span class="bullet time-ago-bullet" aria-hidden="true">•</span>
 				<a>
 					<!-- Time of post -->
@@ -45,7 +45,9 @@
 			
 			<p> 
 			<!-- This is where a user post goes -->
-				The post body goes here. This can be at least somewhat long. Testing wrap to next line: This is a test. This is a test.			</p>
+				The post body goes here. This can be at least somewhat long. Testing wrap to next line: This is a test. This is a test.
+				{{ post['body'] }}
+			</p>
 			
 		</article>
 		<br>
