@@ -1,0 +1,36 @@
+body {
+	margin-left: auto;
+	text-align: left; /* IE */
+    margin-right: auto;
+    text-align: left;   /* IE */
+    width: 500px;         /* Fill this out. */
+}
+
+span{
+	color: black;
+}
+
+p{
+ 	padding: 10px;
+	padding-left: 60px;
+	position: relative;
+	font-family: "Roboto", Arial, sans-serif;
+}
+h2{
+	padding: 6px;
+	font-family: "Roboto", Arial, sans-serif;
+	border-bottom: 2px solid #288ce4;
+ 	background-color: lightgrey;
+}
+h4{
+	color: #288ce4;
+	font-weight: bold;
+	font-family: "Roboto", Arial, sans-serif;
+}
+article{
+	border: 2px solid black;
+	padding: 15px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+ 	border-radius: 6px;
+}

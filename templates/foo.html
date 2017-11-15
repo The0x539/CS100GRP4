@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>My page title</title>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Sonsie+One" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+	<!--[if lt IE 9]> <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+<body>
+	<header>
+		<form>
+			<input type="date" name="date">
+			<input type="time" name="time">
+			<br>
+			<input type="text" placeholder="Post contents" name="body">
+			<br>
+			<input type="submit" name="post" value="Post">
+		</form>
+	</header>
+	
+	<hr>
+	
+	
+	<nav>
+	</nav>
+	
+	<main>
+		{% for post in posts %}
+		
+		<article>
+			<h4>
+				<img src=https://i.imgur.com/d0UBT.png width=50/ height=50/>
+				<!-- Username -->
+				{{ post['username'] }} 
+				<span class="bullet time-ago-bullet" aria-hidden="true">•</span>
+				<a>
+					<!-- Time of post -->
+					{{ post['time'] }}
+				</a>
+			</h4>
+			
+			
+			<p> 
+			<!-- This is where a user post goes -->
+				The post body goes here. This can be at least somewhat long. Testing wrap to next line: This is a test. This is a test.			</p>
+			
+		</article>
+		<br>
+		{% endfor %}
+		
+	</main>
+	
+	<footer>
+		<br/>
+			©Copyright 2050 by nobody. All rights reversed.
+	</footer>
+	
+</body>
+
+
+
+</html>
