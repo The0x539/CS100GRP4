@@ -35,13 +35,12 @@ def foo():
 #        {'name': 'buzz', 'time': 'always', 'body': 'eee'}
     ]
     return render_template('foo.html', posts=posts)
-@server.route('/store', methods = ['POST', 'GET'])
+@server.route('/store', posts = posts, methods = ['POST', 'GET'])
 def store():
     f = open('data.txt', 'r+')
     if request.method == 'POST':
-        f.write(posts+'\n')
-        return render_template('foo.html', posts=posts)
-        
+        f.write(posts+'\n') #the text in the file should resemble a columnar list
+        return render_template('foo.html')#takes it back to a blank webpage
     f.close()
 
 @server.errorhandler(404)
