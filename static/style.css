@@ -1,9 +1,18 @@
+html{
+	background-image: url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/ZxiVVRW/triangle-polygon-loop-06-love-seamless-looping-background-of-triangles_v1sauero__F0000.png"); 
+}
 body {
+
 	margin-left: auto;
 	text-align: left; /* IE */
     margin-right: auto;
     text-align: left;   /* IE */
-    width: 500px;         /* Fill this out. */
+    width: 800px;         /* Fill this out. */
+
+	background-color: white;
+    border: 20px solid white;
+    padding: 15px;
+
 }
 
 span{
