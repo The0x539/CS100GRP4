@@ -2,6 +2,7 @@
 from flask import Flask
 from flask import render_template
 from flask import jsonify
+from flask import request
 server = Flask(__name__)
 
 # Importing Other Modules
@@ -12,7 +13,7 @@ from app import main
 
 @server.route('/hello')
 def hello():
-    return 'Hello World!'
+    return 'Hello World'
 
 # Serving HTML Pages/Templates
 
@@ -26,14 +27,22 @@ def name(name=None):
 
 @server.route('/foo')
 def foo():
-    posts = [
-        {'name': 'bar', 'time': 'too soon', 'body': 'aaa'},
-        {'name': 'baz', 'time': 'too late', 'body': 'bbb'},
-        {'name': 'gaz', 'time': 'right now', 'body': 'ccc'},
-        {'name': 'fizz', 'time': 'never', 'body': 'ddd'},
-        {'name': 'buzz', 'time': 'always', 'body': 'eee'}
+    posts = [('name', 'body', 'time')
+#        {'name': 'bar', 'time': 'too soon', 'body': 'aaa'},
+#       {'name': 'baz', 'time': 'too late', 'body': 'bbb'},
+#        {'name': 'gaz', 'time': 'right now', 'body': 'ccc'},
+#        {'name': 'fizz', 'time': 'never', 'body': 'ddd'},
+#        {'name': 'buzz', 'time': 'always', 'body': 'eee'}
     ]
     return render_template('foo.html', posts=posts)
+@server.route('/store', methods = ['POST', 'GET'])
+def store():
+    f = open('data.txt', 'r+')
+    if request.method == 'POST':
+        f.write(posts+'\n')
+        return render_template('foo.html', posts=posts)
+        
+    f.close()
 
 @server.errorhandler(404)
 def page_not_found(error):
