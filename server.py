@@ -25,22 +25,22 @@ def home():
 def name(name=None):
     return render_template('index.html', name=name)
 
+f = open('templates/data.txt', 'r+')
+
+posts = eval('''[
+    ('sample name', 'sample body', 'sample time')
+]''')
+
 @server.route('/foo')
 def foo():
-    posts = [('name', 'body', 'time')
-#        {'name': 'bar', 'time': 'too soon', 'body': 'aaa'},
-#       {'name': 'baz', 'time': 'too late', 'body': 'bbb'},
-#        {'name': 'gaz', 'time': 'right now', 'body': 'ccc'},
-#        {'name': 'fizz', 'time': 'never', 'body': 'ddd'},
-#        {'name': 'buzz', 'time': 'always', 'body': 'eee'}
-    ]
     return render_template('foo.html', posts=posts)
-@server.route('/store', posts = posts, methods = ['POST', 'GET'])
+
+@server.route('/store', methods = ['POST', 'GET'])
 def store():
-    f = open('data.txt', 'r+')
     if request.method == 'POST':
-        f.write(posts+'\n') #the text in the file should resemble a columnar list
-        return render_template('foo.html')#takes it back to a blank webpage
+        
+        f.write(str(posts)) #the text in the file should resemble a columnar list
+        return render_template('foo.html',posts=posts)#takes it back to a blank webpage
     f.close()
 
 @server.errorhandler(404)
