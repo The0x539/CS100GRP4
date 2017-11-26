@@ -11,7 +11,7 @@
 
 <body>
 	<header>
-		<form action="store" method="POST">
+		<form action="/" method="POST">
 			<input type="date" name="date">
 			<input type="time" name="time">
 			<br>
@@ -29,19 +29,17 @@
 	
 	<main>
 		{% for post in posts %}
-		
 		<article>
 			<h4>
-				<img src=https://i.imgur.com/d0UBT.png width=50/ height=50/>
+				<!-- <img src=https://i.imgur.com/d0UBT.png width=50/ height=50/> -->
 				<!-- Username -->
-				{{ post[0]}} 
+				{{ post[0] }} 
 				<span class="bullet time-ago-bullet" aria-hidden="true">•</span>
 				<a>
 					<!-- Time of post -->
 					{{ post[2] }}
 				</a>
 			</h4>
-			
 			
 			<p> 
 				<!-- This is where the post body goes -->
