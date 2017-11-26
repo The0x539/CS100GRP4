@@ -17,7 +17,7 @@ from app import main
 f = open('templates/data.txt', 'r+')
 
 posts = []
-
+tup = ()
 @server.route('/')
 def home():
 	return render_template('home.html', posts=posts)
@@ -34,11 +34,12 @@ def getall():
 @server.route('/store', methods = ['POST', 'GET'])
 def store():#stores data from form
 	if request.method == 'POST':
-		date = request.form['date']
-		body = request.form['body']
-		time = request.form['time']
+		date = str(request.form['date'])
+		body = str(request.form['body'])
+		time = str(request.form['time'])
+		tup = date, body, time
 	with open('templates/data.txt','r+') as file:
-		file.write(date,body,time+"\n") #the text in the file should resemble a columnar list
+		file.write((str(tup))+"\n") #the text in the file should resemble a columnar list
 		return home() #takes it back to a blank webpage
 	
 
