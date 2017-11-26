@@ -14,22 +14,24 @@ from app import main
 
 # Serving HTML Pages/Templates
 
-f = open('templates/data.txt', 'r+')
+#f = open('templates/data.txt', 'r+')
 
 posts = []
+items = []
 tup = ()
+
+#@server.route('/getall') #collects all data from file and stores in a list called posts
+def getall():
+	with open('sarbani.txt') as file:
+		 for line in file:
+		 	items.append(eval(line))
+		 posts = list(set(items))#checks list for duplicate items, removes them if present
+		 
 @server.route('/')
 def home():
+	getall()#gets all the data and displays on homepage
 	return render_template('home.html', posts=posts)
-@server.route('/getall') #adds to file
-def getall():
-	with open('templates/data.txt','r+') as file:
-    		items = file.read().split("\n")
-    		for i in posts:
-        		if i is '(' or i is ')':
-        			pass
-        		else: pass
-        
+	       
         
 @server.route('/store', methods = ['POST', 'GET'])
 def store():#stores data from form
