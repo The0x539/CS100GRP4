@@ -4,6 +4,7 @@ from flask import render_template
 from flask import jsonify
 from flask import request
 from flask import redirect
+from datetime import datetime
 
 server = Flask(__name__)
 
@@ -21,14 +22,27 @@ def getall():
 		for line in file:
 			items.append(eval(line))
 		return list(set(items)) #checks list for duplicate items, removes them if present
+def timeupdatelist():
+	newlist = getall() #reads all entries of file
+	
+	present= datetime.now()
+	
+	for post in newlist:
+		
+		q = datetime.strptime(post[0], '%Y-%m-%d')#this is a string
+		
+		if q < present:
+			atindex = newlist.index(post)#gets index of the obsolete item
+			del newlist[atindex]
+	return newlist #time relevant and non-duplicated list of tuples
 
 @server.route('/', methods = ['GET'])
 def home():
-	return render_template('home.html', posts=getall())
+	return render_template('home.html', posts=timeupdatelist())
 
 @server.route('/invalid', methods = ['GET'])
 def invalid():
-	return render_template('home.html',posts=getall(),invalid=True)
+	return render_template('home.html',posts=timeupdatelist(),invalid=True)
 
 @server.route('/store', methods = ['POST'])
 def store():#stores data from form
