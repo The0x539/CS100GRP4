@@ -38,7 +38,7 @@ def store():#stores data from form
 		body = str(request.form['body'])
 		time = str(request.form['time'])
 		tup = date, body, time
-	with open('templates/data.txt','r+') as file:
+	with open('templates/data.txt','a+') as file:
 		file.write((str(tup))+"\n") #the text in the file should resemble a columnar list
 		return home() #takes it back to a blank webpage
 	
