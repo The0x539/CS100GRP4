@@ -32,15 +32,15 @@ def invalid():
 
 @server.route('/store', methods = ['POST'])
 def store():#stores data from form
-	global invalid
 	def form(name):
 		return str(request.form[name])
 	date = form('date')
 	body = form('body')
 	time = form('time')
-	if date == '' or body == '' or time == '':
+	location = form('location')
+	if date == '' or body == '' or time == '' or location == '':
 		return redirect('/invalid',code=302)
-	tup = (date, body, time)
+	tup = (date, body, time, location)
 	with open('templates/data.txt','a+') as file:
 		file.write((str(tup))+"\n") #the text in the file should resemble a columnar list
 	return redirect('/',code=302) #takes it back to a blank webpage

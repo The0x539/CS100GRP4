@@ -12,13 +12,14 @@
 <body>
 	<header>
 		{% if invalid %}
-		invalid
+		missing parameter
 		{% endif %}
 		<form action="/store" method="POST">
 			<input type="date" name="date">
 			<input type="time" name="time">
+			<input type="text" name="location" placeholder="Where is it happening?">
 			<br>
-			<textarea placeholder="Post contents" name="body" rows=6 cols=40></textarea>
+			<textarea placeholder="What's happening?" name="body" rows=6 cols=40></textarea>
 			<br>
 			<input type="submit" name="post" value="Post">
 		</form>
@@ -35,13 +36,14 @@
 		<article>
 			<h4>
 				<!-- <img src=https://i.imgur.com/d0UBT.png width=50/ height=50/> -->
-				<!-- Username -->
+				<!-- Date -->
 				{{ post[0] }} 
 				<span class="bullet time-ago-bullet" aria-hidden="true">•</span>
-				<a>
-					<!-- Time of post -->
-					{{ post[2] }}
-				</a>
+				<!-- Time -->
+				{{ post[2] }}
+				<span class="bullet time-ago-bullet" aria-hidden="true">•</span>
+				<!-- Location -->
+				{{ post[3] }}
 			</h4>
 			
 			<p> 
