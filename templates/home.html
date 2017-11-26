@@ -11,6 +11,9 @@
 
 <body>
 	<header>
+		{% if invalid %}
+		<p>invalid</p>
+		{% endif %}
 		<form action="/" method="POST">
 			<input type="date" name="date">
 			<input type="time" name="time">

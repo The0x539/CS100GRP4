@@ -23,14 +23,18 @@ def getall():
 		return list(set(items)) #checks list for duplicate items, removes them if present
 
 @server.route('/', methods = ['GET'])
-def home():
-	return render_template('home.html', posts=getall())
+def home(invalid=False):
+	return render_template('home.html', posts=getall(), invalid=invalid)
 
 @server.route('/', methods = ['POST'])
 def store():#stores data from form
-	date = str(request.form['date'])
-	body = str(request.form['body'])
-	time = str(request.form['time'])
+	def form(name):
+		return str(request.form[name])
+	date = form('date')
+	body = form('body')
+	time = form('time')
+	if date == '' or body == '' or time == '':
+		return home(invalid=True)
 	tup = (date, body, time)
 	with open('templates/data.txt','a+') as file:
 		file.write((str(tup))+"\n") #the text in the file should resemble a columnar list
