@@ -22,7 +22,7 @@ tup = ()
 
 #@server.route('/getall') #collects all data from file and stores in a list called posts
 def getall():
-	with open('sarbani.txt') as file:
+	with open('templates/data.txt') as file:
 		 for line in file:
 		 	items.append(eval(line))
 		 posts = list(set(items))#checks list for duplicate items, removes them if present
