@@ -16,14 +16,14 @@ from app import main
 # Serving HTML Pages/Templates
 
 #collects all data from file and stores in a list
-def getall():
+def readfile():
 	with open('templates/data.txt') as file:
 		items = []
 		for line in file:
 			items.append(eval(line))
 		return list(set(items)) #checks list for duplicate items, removes them if present
 def timeupdatelist():
-	newlist = getall() #reads all entries of file
+	newlist = readfile() #reads all entries of file
 	
 	present= datetime.now()
 	
