@@ -1,4 +1,1 @@
-<<<<<<< HEAD
 [('sample name', 'sample body', 'sample time')][('sample name', 'sample body', 'sample time')]
-=======
->>>>>>> fb1fa6d4a0e6c2b1b29483cb84502f893a92badb
