@@ -3,13 +3,31 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>My page title</title>
+	<title>IIT Student Event Creation Hub</title>
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Sonsie+One" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 	<!--[if lt IE 9]> <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
 
 <body>
+	<h1>
+		IIT Student Event Creation Hub
+	</h1>
+	<h3>
+		This is a IIT Student Event Creation Website. 
+		<br>
+		<br>
+		Want to organize an event with IIT students? 
+		<br>
+		Need a ride to go somewhere ASAP? 
+		<br>
+		Here you can make a post to ask your fellow schoolmates to help you out.
+		
+		<br>
+		<br>
+		Below you can select the date and time of your event as well as a message describing the event.
+	</h3>
+	
 	<header>
 		<form action="store" method="POST">
 			<input type="date" name="date">
