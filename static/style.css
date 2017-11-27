@@ -36,6 +36,17 @@ h4{
 	font-weight: bold;
 	font-family: "Roboto", Arial, sans-serif;
 }
+h1{
+	color: black;
+	font-weight: bold;
+	font-family: "Roboto", Arial, sans-serif;
+}
+h3{
+	color: black;
+	font-weight: normal;
+	font-family: "Roboto", Arial, sans-serif;
+	font-size: 15px;
+}
 article{
 	border: 2px solid black;
 	padding: 15px;
