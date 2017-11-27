@@ -25,7 +25,7 @@ def readfile():
 def timeupdatelist():
 	newlist = readfile() #reads all entries of file
 	
-	present= datetime.now()
+	present = datetime.now()
 	
 	for post in newlist:
 		
