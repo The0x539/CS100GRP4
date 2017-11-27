@@ -3,77 +3,62 @@ from flask import Flask
 from flask import render_template
 from flask import jsonify
 from flask import request
+from flask import redirect
+from datetime import datetime
+
 server = Flask(__name__)
 
 # Importing Other Modules
 import requests
 
-# Importing Custom Modules
 from app import main
-
-@server.route('/hello')
-def hello():
-    return 'Hello World'
 
 # Serving HTML Pages/Templates
 
-@server.route('/')
+#collects all data from file and stores in a list
+def readfile():
+	with open('templates/data.txt') as file:
+		items = []
+		for line in file:
+			items.append(eval(line))
+		return list(set(items)) #checks list for duplicate items, removes them if present
+def timeupdatelist():
+	newlist = readfile() #reads all entries of file
+	
+	present = datetime.now()
+	
+	for post in newlist:
+		
+		q = datetime.strptime(post[0], '%Y-%m-%d')#this is a string
+		
+		if q < present:
+			atindex = newlist.index(post)#gets index of the obsolete item
+			del newlist[atindex]
+	return newlist #time relevant and non-duplicated list of tuples
+
+@server.route('/', methods = ['GET'])
 def home():
-    return render_template('index.html', name='Visitor')
-    
-@server.route('/name/<name>')
-def name(name=None):
-    return render_template('index.html', name=name)
+	return render_template('home.html', posts=timeupdatelist())
 
-f = open('templates/data.txt', 'r+')
+@server.route('/invalid', methods = ['GET'])
+def invalid():
+	return render_template('home.html',posts=timeupdatelist(),invalid=True)
 
-posts = eval('''[
-    ('sample name', 'sample body', 'sample time')
-]''')
-
-@server.route('/foo')
-def foo():
-    return render_template('foo.html', posts=posts)
-
-@server.route('/store', methods = ['POST', 'GET'])
-def store():
-    if request.method == 'POST':
-        
-        f.write(str(posts)) #the text in the file should resemble a columnar list
-        return render_template('foo.html',posts=posts)#takes it back to a blank webpage
-    f.close()
+@server.route('/store', methods = ['POST'])
+def store():#stores data from form
+	def form(name):
+		return str(request.form[name])
+	date = form('date')
+	body = form('body')
+	time = form('time')
+	location = form('location')
+	if date == '' or body == '' or time == '' or location == '':
+		return redirect('/invalid',code=302)
+	tup = (date, body, time, location)
+	with open('templates/data.txt','a+') as file:
+		file.write((str(tup))+"\n") #the text in the file should resemble a columnar list
+	return redirect('/',code=302) #takes it back to a blank webpage
 
 @server.errorhandler(404)
 def page_not_found(error):
-    return render_template('404.html'), 404
-
-# Responding to Requests with Data
-
-@server.route('/reflect/<name>')
-def reflect(name=None):
-    r = {'name': name}
-    return jsonify(r)
-    
-@server.route('/weather')
-def weather():
-    w = main.get_weather()
-    return jsonify(w)
-    
-@server.route('/location_image/<search>')
-def location_image(search):
-    geo_url = "https://maps.googleapis.com/maps/api/geocode/json"
-    geo_query = {
-        "address": search
-    }
-    geo_res = requests.request("GET", geo_url, params=geo_query);
-    geo_data = geo_res.json();
-    loc = geo_data['results'][0]['geometry']['location'];
-    url = "https://maps.googleapis.com/maps/api/streetview"
-    querystring = {
-        "size": "600x600",
-        "location": str(loc['lat']) + "," + str(loc['lng']),
-        "heading": "90",
-        "pitch": "0"
-    }
-    response = requests.request("GET", url, params=querystring)
-    return response.url;
+	return render_template('404.html'), 404
