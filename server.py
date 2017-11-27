@@ -38,11 +38,11 @@ def timeupdatelist():
 
 @server.route('/', methods = ['GET'])
 def home():
-	return render_template('home.html', posts=timeupdatelist())
+	return render_template('home.html', posts=readfile())
 
 @server.route('/invalid', methods = ['GET'])
 def invalid():
-	return render_template('home.html',posts=timeupdatelist(),invalid=True)
+	return render_template('home.html',posts=readfile(),invalid=True)
 
 @server.route('/store', methods = ['POST'])
 def store():#stores data from form
